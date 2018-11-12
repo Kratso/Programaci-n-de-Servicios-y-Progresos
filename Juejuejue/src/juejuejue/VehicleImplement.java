@@ -1,17 +1,20 @@
 
 package juejuejue;
 
-
-
-
-public class VehicleImplement {
-
-
-	public static void main(String[] args) {
-		
-
+class VehicleImplement  implements Vehicle {
+	private Func<Double, Integer, Integer, Double> speedModel;
+	private int weightPounds, hoursePower;
+	public VehicleImplement (int weightPounds, int hoursePower){
+		this.weightPounds = weightPounds;
+		this.hoursePower = hoursePower;   }
+	public void setSpeedModel(Func<Double, Integer,
+			Integer, Double> speedModel){
+		this.speedModel = speedModel;
+	}   
+	public double getSpeedMph(double timeSec){
+		return this.speedModel.apply(timeSec,
+				weightPounds, hoursePower);
 	}
-	
 }
 
 @FunctionalInterface
