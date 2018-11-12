@@ -15,13 +15,10 @@ import java.io.InputStreamReader;
  */
 public class UT1Ej4 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String aMay = br.readLine();
         System.out.println(aMay.toUpperCase());
+		br.close();
     }
-    
 }
