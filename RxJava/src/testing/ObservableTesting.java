@@ -6,6 +6,8 @@
 package testing;
 
 import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -13,22 +15,7 @@ import io.reactivex.Observable;
  */
 public class ObservableTesting {
 
-	public static void main() {
-//		Observable<String> source = Observable.create(emitter -> {
-//			try {
-//				emitter.onNext("Alpha");
-//				emitter.onNext("Beta");
-//				emitter.onNext("Gamma");
-//				emitter.onNext("Delta");
-//				emitter.onNext("Epsilon");
-//				emitter.onComplete();
-//			} catch (Throwable e) {
-//				emitter.onError(e);
-//			}
-//		});
-//		source.map(String::length)
-//				.filter(i -> i >= 5)
-//				.subscribe(s -> System.out.println("RECEIVED: " + s));
+	public static void main(String[] args) {
 
 		Observable<String> source = Observable.just("Alpha", "Beta", "Gamma", "Delta",
 				"Epsilon");
@@ -41,7 +28,37 @@ public class ObservableTesting {
 		source.map(String::length).filter(i -> i >= 5)
 				.subscribe(s -> System.out.println("Observer 2 Received: "
 				+ s));
+		
+		System.out.println("Fin primera prueba");
+		
+		Observable<Long> seconds
+				= Observable.interval(1, TimeUnit.SECONDS);
+		Disposable disposable
+				= seconds.subscribe(l -> System.out.println("Received: " + l));
+		//sleep 5 seconds
+		sleep(5000);
+		disposable.dispose();
+		//sleep 5 seconds to prove
+		//there are no more emissions
+		sleep(5000);
+		
+		System.out.println("Fin segunda prueba");
 
+		Observable.interval(500, TimeUnit.MILLISECONDS)
+				.take(2, TimeUnit.SECONDS)
+				.subscribe(i -> System.out.println("RECEIVED: " + i));
+		sleep(5000);
+		
+		System.out.println("Fin tercera prueba");
+
+	}
+
+	public static void sleep(int millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

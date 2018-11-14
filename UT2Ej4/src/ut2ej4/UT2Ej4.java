@@ -18,7 +18,7 @@ public class UT2Ej4 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		Tic tic = () -> {
+		TicTac tic = () -> {
 			for (;;) {
 				System.out.println("TIC");
 				try {
@@ -29,7 +29,7 @@ public class UT2Ej4 {
 			}
 		};
 		
-		Tac tac = () -> {
+		TicTac tac = () -> {
 			for (;;) {
 				System.out.println("TAC");
 				try {
@@ -49,13 +49,8 @@ public class UT2Ej4 {
 }
 
 @FunctionalInterface
-interface Tic extends Runnable{
+interface TicTac extends Runnable{
 	@Override
 	public void run();
 }
 
-@FunctionalInterface
-interface Tac extends Runnable{
-	@Override
-	public void run();
-}
