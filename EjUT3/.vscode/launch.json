@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ej1Servidor",
+            "request": "launch",
+            "mainClass": "ej1.ej1Servidor"
+        }
+    ]
+}
