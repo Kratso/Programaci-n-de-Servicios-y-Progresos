@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TiradorManager",
+            "request": "launch",
+            "mainClass": "testTirada.TiradorManager"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ej1Servidor",
             "request": "launch",
             "mainClass": "ej1.ej1Servidor"
